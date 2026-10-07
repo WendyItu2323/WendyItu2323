@@ -1,4 +1,4 @@
-<div align="center">
+n<div align="center">
 
 # Holis 👋🏻
 
@@ -12,7 +12,7 @@
 
 ## ✦ Sobre mí ✦
 
-Soy estudiante de **Mercadeo y Negocios Internacionales** con interés en tecnología,
+Soy estudiante  **Senior** con interés en tecnología,
 creatividad, análisis y desarrollo de ideas que puedan generar impacto.
 
 Me gusta combinar el lado estratégico de los negocios con herramientas digitales
