@@ -1,3 +1,4 @@
+
 <div align="center">
 
 <img src="https://readme-typing-svg.demolab.com?font=Playfair+Display&size=25&duration=3000&pause=1000&color=A95569&center=true&vCenter=true&width=600&lines=Hi%2C+I'm+Wendy+%E2%9C%A6;Welcome+to+my+little+corner+of+GitHub+%E2%99%A1;Learning%2C+creating+%26+building+ideas+%E2%9C%A6"
