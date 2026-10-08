@@ -4,7 +4,6 @@
 alt="Typing introduction">
 
 <br><br>
-
 <img src="Wendy_Iturriaga_GitHub_Banner_800x200.png"
 alt="Wendy Iturriaga Banner" width="100%">
 
