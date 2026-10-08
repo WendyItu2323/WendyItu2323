@@ -2,7 +2,7 @@
 
 # Holis 
 
-<img src="Banner elegante de Wendy Iturriaga.png" alt="Banner de Wendy" width="100%">
+<img src="Wendy_Iturriaga_GitHub_Banner_800x200.png" alt="Banner de Wendy" width="100%">
 
 </div>
 
