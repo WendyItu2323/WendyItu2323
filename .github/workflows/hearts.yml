@@ -1,0 +1,182 @@
+name: Generate Heart Contributions
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Generate heart animation
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: WendyItu2323
+        run: |
+          python - <<'PY'
+          import os
+          import json
+          import urllib.request
+          import urllib.error
+          import html
+          import math
+          import datetime
+
+          username = os.environ["USERNAME"]
+          token = os.environ["GH_TOKEN"]
+
+          query = """
+          query($login: String!, $from: DateTime!, $to: DateTime!) {
+            user(login: $login) {
+              contributionsCollection(from: $from, to: $to) {
+                contributionCalendar {
+                  weeks {
+                    contributionDays {
+                      contributionCount
+                      date
+                      weekday
+                    }
+                  }
+                }
+              }
+            }
+          }
+          """
+
+          today = datetime.datetime.now(datetime.timezone.utc)
+          from_date = today - datetime.timedelta(days=365)
+
+          payload = json.dumps({
+              "query": query,
+              "variables": {
+                  "login": username,
+                  "from": from_date.isoformat(),
+                  "to": today.isoformat()
+              }
+          }).encode()
+
+          request = urllib.request.Request(
+              "https://api.github.com/graphql",
+              data=payload,
+              headers={
+                  "Authorization": f"Bearer {token}",
+                  "Content-Type": "application/json",
+                  "User-Agent": "GitHub-Contribution-Hearts"
+              }
+          )
+
+          with urllib.request.urlopen(request) as response:
+              data = json.loads(response.read())
+
+          weeks = data["data"]["user"]["contributionsCollection"]["contributionCalendar"]["weeks"]
+
+          days = []
+          for week in weeks:
+              for day in week["contributionDays"]:
+                  days.append(day)
+
+          # Grid dimensions
+          cell = 12
+          gap = 4
+          width = len(weeks) * (cell + gap) + 20
+          height = 7 * (cell + gap) + 20
+
+          # Pink palette
+          bg = "#0D1117"
+          empty = "#161B22"
+          pink = "#A95569"
+          pink_light = "#D98298"
+          pink_bright = "#F3A6B8"
+
+          def heart(x, y, size, color):
+              s = size
+              return f'''
+              <path d="
+                M {x} {y+s*0.3}
+                C {x-s*0.5} {y-s*0.15}, {x-s*0.8} {y+s*0.55}, {x} {y+s}
+                C {x+s*0.8} {y+s*0.55}, {x+s*0.5} {y-s*0.15}, {x} {y+s*0.3}
+                Z"
+                fill="{color}"/>
+              '''
+
+          # Background grid
+          svg = [
+              f'<svg xmlns="http://www.w3.org/2000/svg" '
+              f'width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
+              f'<rect width="100%" height="100%" rx="12" fill="{bg}"/>'
+          ]
+
+          for i, week in enumerate(weeks):
+              for day in week["contributionDays"]:
+                  weekday = day["weekday"]
+                  x = 10 + i * (cell + gap)
+                  y = 10 + weekday * (cell + gap)
+                  count = day["contributionCount"]
+
+                  svg.append(
+                      f'<rect x="{x}" y="{y}" width="{cell}" height="{cell}" '
+                      f'rx="3" fill="{empty}"/>'
+                  )
+
+          # Animated heart trail
+          trail = []
+          for i, week in enumerate(weeks):
+              for day in week["contributionDays"]:
+                  if day["contributionCount"] > 0:
+                      weekday = day["weekday"]
+                      x = 10 + i * (cell + gap) + cell / 2
+                      y = 10 + weekday * (cell + gap) + cell / 2
+                      trail.append((x, y))
+
+          if not trail:
+              trail = [(20, 20)]
+
+          for index, (x, y) in enumerate(trail):
+              delay = index * 0.035
+              color = pink if index % 3 else pink_light
+
+              svg.append(f'''
+              <g opacity="0">
+                {heart(x-5, y-5, 10, color)}
+                <animate attributeName="opacity"
+                         values="0;1;1;0"
+                         dur="5s"
+                         begin="-{delay}s"
+                         repeatCount="indefinite"/>
+              </g>
+              ''')
+
+          svg.append("</svg>")
+
+          os.makedirs("dist", exist_ok=True)
+
+          with open("dist/github-contribution-hearts.svg", "w", encoding="utf-8") as f:
+              f.write("\n".join(svg))
+          PY
+
+      - name: Publish animation
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git clone --depth 1 --branch output \
+            https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git output-repo \
+            || git clone --depth 1 \
+            https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git output-repo
+
+          cd output-repo
+
+          git checkout --orphan output 2>/dev/null || true
+
+          rm -f github-contribution-hearts.svg
+
+          cp ../dist/github-contribution-hearts.svg .
+
+          git add github-contribution-hearts.svg
+          git commit -m "Update contribution hearts" || true
+          git push origin output --force
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
