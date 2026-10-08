@@ -2,7 +2,7 @@ n<div align="center">
 
 # Holis 👋🏻
 
-<img src="Banner elegante de marca personal.png" alt="Banner de Wendy" width="100%">
+<img src="Banner elegante de Wendy Iturriaga.png" alt="Banner de Wendy" width="100%">
 
 </div>
 
