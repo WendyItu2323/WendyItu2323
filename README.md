@@ -1,6 +1,6 @@
 <div align="center">
 
-# Holis 👋🏻
+# Holis 
 
 <img src="Banner elegante de Wendy Iturriaga.png" alt="Banner de Wendy" width="100%">
 
