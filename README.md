@@ -119,17 +119,24 @@ Ideas & strategies
 
 <div align="center">
 
-## ♡ Currently Learning ♡
+## ✧ What I'm into ✧
 
 <br>
 
-```text
-╭──────────────────────────────────────╮
-│                                      │
-│   🐍 Python                          │
-│   📊 Data & Excel                    │
-│   💻 Git & GitHub                    │
-│   💡 Creative Problem Solving        │
-│   🌎 International Business          │
-│                                      │
-╰──────────────────────────────────────╯
+<img src="https://img.shields.io/badge/Technology-000000?style=for-the-badge&logo=googlechrome&logoColor=A95569">
+
+<img src="https://img.shields.io/badge/Data%20Analysis-000000?style=for-the-badge&logo=chartdotjs&logoColor=A95569">
+
+<img src="https://img.shields.io/badge/Creative%20Ideas-000000?style=for-the-badge&logo=lightbulb&logoColor=A95569">
+
+<img src="https://img.shields.io/badge/Python-000000?style=for-the-badge&logo=python&logoColor=A95569">
+
+<br>
+
+<img src="https://img.shields.io/badge/Business-000000?style=for-the-badge&logo=briefcase&logoColor=A95569">
+
+<img src="https://img.shields.io/badge/Communication-000000?style=for-the-badge&logo=googletranslate&logoColor=A95569">
+
+<img src="https://img.shields.io/badge/Problem%20Solving-000000?style=for-the-badge&logo=target&logoColor=A95569">
+
+</div>
