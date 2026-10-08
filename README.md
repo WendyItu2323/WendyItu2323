@@ -137,15 +137,3 @@ Ideas & strategies
 
 </div>
 
-<br>
-
-<div align="center">
-
-## 🐍 Contribution Snake ✦
-
-<br>
-
-<img src="https://raw.githubusercontent.com/WendyItu2323/WendyItu2323/output/github-contribution-grid-snake.svg"
-alt="GitHub Contribution Snake">
-
-</div>
