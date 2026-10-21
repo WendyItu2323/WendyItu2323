@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="64" viewBox="0 0 340 64">
+  <defs>
+    <linearGradient id="fondo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1f0b13"/>
+      <stop offset="100%" stop-color="#0d0d12"/>
+    </linearGradient>
+    <linearGradient id="borde" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8f3d52"/>
+      <stop offset="50%" stop-color="#d98a9c"/>
+      <stop offset="100%" stop-color="#8f3d52"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="336" height="60" rx="10" fill="url(#fondo)" stroke="url(#borde)" stroke-width="2"/>
+  <text x="170" y="40" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif"
+        font-size="22" letter-spacing="3" fill="#f3dde2">✦ JUGAR AHORA ✦</text>
+</svg>
