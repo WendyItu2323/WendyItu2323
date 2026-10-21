@@ -120,7 +120,7 @@ Ideas & strategies
 
 <h2>♡ Juega conmigo ♡</h2>
 
-<a href="https://TU-USUARIO.github.io/TU-REPOSITORIO/juego.html">
+<a href="https://wendyitu2323.github.io/WendyItu2323/juego.html">
   <img src="boton-jugar.svg" width="340" alt="Jugar ahora">
 </a>
 
