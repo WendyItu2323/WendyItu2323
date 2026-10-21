@@ -116,14 +116,12 @@ Ideas & strategies
 
 <div align="center">
 
-<div align="center">
-
 <hr>
 
-<h2>♡ Juegemos ♡</h2>
+<h2>♡ Juega conmigo ♡</h2>
 
 <a href="https://TU-USUARIO.github.io/TU-REPOSITORIO/juego.html">
-  <img src="https://img.shields.io/badge/%E2%99%A1-JUGAR%20AHORA-b5566b?style=for-the-badge&labelColor=0d0d12" alt="Jugar ahora">
+  <img src="boton-jugar.svg" width="340" alt="Jugar ahora">
 </a>
 
 <p>✦ Haz clic y pon a prueba tu suerte ✦</p>
